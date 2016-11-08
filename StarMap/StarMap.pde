@@ -1,79 +1,82 @@
 /*
-
-  LAB TEST 1
-  C15734155
-  GROUP D
-  OOP
-
+ LAB TEST1
+ OOP
+ C15734155
 */
+
+
 
 Table table;
 
+
+Star strs;
+int xLines = 10;
+int yLines = 10;
+
+//Declare a global ArrayList of Star objects.
+ArrayList<Star> Stars = new ArrayList<Star>(); 
 void setup()
 {
-  size (800,800);
+  //Start with a blank sketch. Set the drawing window size to be 800 x 800.
+  size(800, 800);
   background(0);
-  //Declare a global ArrayList of Star objects.
-  ArrayList<Star> data =new ArrayList<Star>();
- 
+  
+  strs = new Star();
+  loadData();
+  printStars();
 }
 
- //Write a method called loadData that loads the data from the file and populates the ArrayList.
+//Write a method called loadData that loads the data from the file and populates the ArrayList
 void loadData()
 {
-  String[] lines = loadStrings("stars.csv");
-    for(String line: lines){
-     Star star = new Star(star);
-     data.add(star);
-   }
+  
+  clear();
+  table = loadTable("stars.csv", "header");
+  println(table.getRowCount() + " total rows in table"); 
+  
+  
 }
 
- 
-
-
-
-//Write a method called printStars that prints the contents of the ArrayList after it has been loaded.
+/*
+Write a method called printStars that prints the contents
+of the ArrayList after it has been loaded. You should make 
+a toString method on the Star class to help you do this. Call this from setup after you load the data to make sure it gets loaded correctly.
+*/
 void printStars()
 {
-
-  // Iterating over an ArrayList
- for (int i = 0; i < data.size(); i ++)
+   for (TableRow row : table.rows()) 
  {
-   Star e = data.get(i);
-   println(e);
+   Star strs = new Star(row.getInt(2), row.getString(3), row.getFloat(12), row.getFloat(13), row.getFloat(14)
+   ,row.getFloat(15), row.getFloat(16));
+   
+   println(strs);
+   
+   Stars.add(strs);
  }
- for (Star e : data)
- {
-   println(e);
- }
- //reading files
-
- table = loadTable("star.txt", "header, csv");
-
- println(table.getRowCount() + " total rows in table"); 
- 
- //wipes the array
- data.clear();
-
- for (TableRow row : table.rows()) {
-
-
-   Star exp = new Star(row.getInt(0), row.getString(1), row.getFloat(2), row.getFloat(3), row.getFloat(4));
-   println(exp);
-
-   //store in array 
-   data.add(exp);
-   //to check 
-   // println(data
-  
-  
 }
-
-
-
 
 void draw()
 {
-  background(0);
+ /* 
+  Write code to draw the purple gridlines with labels.
+  You should leave a 50 pixel border around the outside
+  of the drawing window. These gridlines go from -5 parsecs
+  to 5 parsecs on the x and y axis.
+  */
+  background (0);
+  stroke(148,0,211);
 
+  float distance_x = (float)height/xLines;
+  float distance_y = (float)width/yLines;
+
+  for(int i = 0; i < xLines; i++)
+  {
+    line(0, i*distance_x, width, i*distance_x);
+
+  }
+
+  for(int i = 0; i < yLines; i++)
+  {
+    line (i*distance_y,0,i*distance_y, height);
+  }
 }
