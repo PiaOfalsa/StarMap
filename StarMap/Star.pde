@@ -60,7 +60,12 @@ the class from the appropriate columns in the TableRow.
   // so it can be printed
   
   
-  //helps to print
+  /*
+  Write a method called printStars that prints
+  the contents of the ArrayList after it has been loaded.
+  You should make a toString method on the Star class to help you do this
+  
+  */
   String toString()
   {
     return Habitability + "\t" + DisplayName + "\t" + Distance 

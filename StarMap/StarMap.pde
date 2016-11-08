@@ -2,6 +2,7 @@
  LAB TEST1
  OOP
  C15734155
+ GROUP D
 */
 
 
@@ -49,9 +50,10 @@ void printStars()
    Star strs = new Star(row.getInt(2), row.getString(3), row.getFloat(12), row.getFloat(13), row.getFloat(14)
    ,row.getFloat(15), row.getFloat(16));
    
-   println(strs);
+   
    
    Stars.add(strs);
+   println(strs);
  }
 }
 
@@ -80,3 +82,14 @@ void draw()
     line (i*distance_y,0,i*distance_y, height);
   }
 }
+
+/*
+Write code to plot the stars onto the grid. For each star you should:
+Use the star's Xg and Yg values. Ignore the Zg value when drawing the Star.
+Draw a yellow cross at the star position on the grid
+Draw a red circle with a diameter of the star's size.
+Print the star name beside the star. The text should be left aligned horizontally and centred vertically.
+
+text(horizLabels[i].substring(0, 3), x, y);
+
+*/
